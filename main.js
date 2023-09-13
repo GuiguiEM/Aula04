@@ -3,13 +3,15 @@
 const botaoMostrarTodosNumeros = document.getElementById('botao-mostrar-todos-numeros')
 const botaoMostrarNumerosPares = document.getElementById('botao-mostrar-numeros-pares')
 const botaoMostrarNumerosImpares = document.getElementById('botao-mostrar-numeros-impares')
-const botaoMostrarNumerosMultiplosTresQuatro = document.getElementById('botao-mostrar-numeros-multiplos-tres')
-const botaoMostrarNumerosMultiplosTresOuQuatro = document.getElementById('botao-mostrar-numeros-multiplos-tres-quatro')
+const botaoMostrarNumerosMultiplosTresEQuatro = document.getElementById('botao-mostrar-numeros-multiplos-tres-e-quatro')
+const botaoMostrarNumerosMultiplosTresOuQuatro = document.getElementById('botao-mostrar-numeros-multiplos-tres-ou-quatro')
+const botaoMostrarNumeroAnterior = document.getElementById('botao-mostrar-anterior')
+const botaoMostrarTriplo = document.getElementById('botao-mostrar-triplo')
 
 
 
 
-function mostrarTodosNumeros() {
+function MostrarTodosNumeros(){
     const numeros = document.getElementById('numeros').value.split(',')
     const container = document.getElementById('container-todos-numeros')
 
@@ -22,7 +24,7 @@ function mostrarTodosNumeros() {
     }
 }
 
-function MostrarNumerosPares() {
+function MostrarNumerosPares(){
     const numeros = document.getElementById('numeros').value.split(',')
     const container = document.getElementById('container-numeros-pares')
 
@@ -38,7 +40,7 @@ function MostrarNumerosPares() {
     }
 }
 
-function MostrarNumerosimpares() {
+function MostrarNumerosimpares(){
     const numeros = document.getElementById('numeros').value.split(',')
     const container = document.getElementById('container-numeros-impares')
 
@@ -54,14 +56,14 @@ function MostrarNumerosimpares() {
     }
 }
 
-function MostrarNumerosMultiplosTresQuatro() {
-    const numeros = document.getElementById('numeros').value.split(',')
-    const container = document.getElementById('container-numeros-multiplos-tres-quatro')
+function MostrarNumerosMultiplosTresEQuatro(){
+     const numeros = document.getElementById('numeros').value.split(',')
+    const container = document.getElementById('container-numeros-multiplos-tres-e-quatro')
 
     container.replaceChildren('')
-    const ultmoIndice = numeros.length
+    const ultimoIndice = numeros.length
 
-    for (let contador = 0; contador < ultmoIndice; contador++) {
+    for (let contador = 0; contador < ultimoIndice; contador++) {
         if (numeros[contador] % 3 == 0 && numeros[contador] % 4 == 0) {
             const novoSpan = document.createElement('span')
             novoSpan.textContent = numeros[contador]
@@ -70,7 +72,7 @@ function MostrarNumerosMultiplosTresQuatro() {
     }
 }
 
-function MostrarNumerosMultiplosTresOuQuatro() {
+function MostrarNumerosMultiplosTresOuQuatro(){
     const numeros = document.getElementById('numeros').value.split(',')
     const container = document.getElementById('container-numeros-multiplos-tres-ou-quatro')
 
@@ -78,7 +80,7 @@ function MostrarNumerosMultiplosTresOuQuatro() {
     const ultmoIndice = numeros.length
 
     for (let contador = 0; contador < ultmoIndice; contador++) {
-        if (numeros[contador] % 4 == 0 || numeros[contador] % 4 == 0) {
+        if (numeros[contador] % 3 == 0 || numeros[contador] % 4 == 0) {
             const novoSpan = document.createElement('span')
             novoSpan.textContent = numeros[contador]
             container.appendChild(novoSpan)
@@ -86,8 +88,38 @@ function MostrarNumerosMultiplosTresOuQuatro() {
     }
 }
 
-botaoMostrarTodosNumeros.addEventListener('click', mostrarTodosNumeros)
+function MostrarAnterior(){
+    const numeros = document.getElementById('numeros').value.split(',')
+    const container = document.getElementById('container-mostrar-anterior')
+
+    container.replaceChildren('')
+    const ultimoIndice = numeros.length
+
+    for (let contador = 0; contador < ultimoIndice; contador++) {
+        const novoSpan = document.createElement('span')
+        novoSpan.textContent = numeros[contador] - 1
+        container.appendChild(novoSpan)
+    }
+}
+
+function MostrarTriplo(){
+    const numeros = document.getElementById('numeros').value.split(',')
+    const container = document.getElementById('container-mostrar-triplo')
+
+    container.replaceChildren('')
+    const ultimoIndice = numeros.length
+
+    for (let contador = 0; contador < ultimoIndice; contador++) {
+        const novoSpan = document.createElement('span')
+        novoSpan.textContent = numeros[contador] * 3
+        container.appendChild(novoSpan)
+    }
+}
+
+botaoMostrarTodosNumeros.addEventListener('click', MostrarTodosNumeros)
 botaoMostrarNumerosPares.addEventListener('click', MostrarNumerosPares)
 botaoMostrarNumerosImpares.addEventListener('click', MostrarNumerosimpares)
-botaoMostrarNumerosMultiplosTres.addEventListener('click', MostrarNumerosMultiplosTresQuatro)
+botaoMostrarNumerosMultiplosTresEQuatro.addEventListener('click', MostrarNumerosMultiplosTresEQuatro)
 botaoMostrarNumerosMultiplosTresOuQuatro.addEventListener('click', MostrarNumerosMultiplosTresOuQuatro)
+botaoMostrarNumeroAnterior.addEventListener('click', MostrarAnterior)
+botaoMostrarTriplo.addEventListener('click', MostrarTriplo)
